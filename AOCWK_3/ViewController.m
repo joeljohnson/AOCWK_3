@@ -18,7 +18,7 @@
 {
     // 4. Call the Append function with two NSStrings. Capture the result and display a UIAlertView with the appended string using displayAlertWithString.
     NSString *appended = [[NSString alloc]init];
-    appended = [self Append:@"This is my first String." :@"This is my second String"];
+    appended = [self Append:@"This is my first String." secondString:@"This is my second String"];
     NSLog(@"%@", appended);
     [self DisplayAlertWithString:appended];
 
@@ -27,7 +27,7 @@
     int num1 = 10;
     int num2 = 20;
     // capturing the value in variable name sum
-    int sum = [self Add:num1 :num2];
+    int sum = [self Add:num1 thisNumber:num2];
     
 // 7. Bundle the returned integer into an NSNumber and then convert it to a NSString and pass it to the DisplayAlertWithString function.
 // 8. Give it some text for the title. The message will read, "The number is 00". Replace the 00 with the integer passed into the function.
@@ -44,7 +44,9 @@
     int compareValue1 = 112;
     int compareValue2 = 112;
 
-    BOOL comparedAnswer = [self Compare:compareValue1 :compareValue2];
+    BOOL comparedAnswer = [self Compare:compareValue1 numberDeuce:compareValue2];
+    //There has got to be a better way to do this ????
+    
     if (comparedAnswer == YES)
     {
         NSNumber *val1 = [[NSNumber alloc]initWithInt:compareValue1];
@@ -64,25 +66,9 @@
     }
     else
     {
-        
+        [self DisplayAlertWithString:@"The numbers are not equal. Move along."];
     }
-    
-    
-    
 
-    /*    UIAlertView *myALert = [[UIAlertView alloc]initWithTitle:@"My Test Alert" message:@"test" delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
-    if (myALert != nil){
-
-        [myALert show];
-
-        UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-        if (indicator != nil)
-        {
-            indicator.center = CGPointMake((myALert.bounds.size.width/2.0f), (myALert.bounds.size.height/2.0f) +25.0f);
-            [indicator startAnimating];
-            [myALert addSubview:indicator];
-        }
-    } */
     
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
@@ -96,13 +82,13 @@
 
 
 // 1. Create a function called Add. This function will take two NSInteger or int types and return the result of an addition between these two.
--(int)Add:(NSInteger)numberOne :(NSInteger)numberTwo
+-(int)Add:(NSInteger)numberOne thisNumber:(NSInteger)numberTwo
 {
     int sum_of_both = numberOne + numberTwo;
     return sum_of_both;
 }
 // 2. Create a BOOL function called Compare that takes two NSInteger values. Return YES or NO based on whether the values are equal.
--(BOOL)Compare:(NSInteger)number1 :(NSInteger)number2
+-(BOOL)Compare:(NSInteger)number1 numberDeuce:(NSInteger)number2
 {
     if (number1 == number2){
         return YES;
@@ -113,7 +99,7 @@
 } 
 
 // 3. Create a function called Append. This function will take two NSStrings and return a new NSString containing the appended strings using an NSMutableString and the Append method.
--(NSString*)Append:(NSString*)string1 :(NSString*)string2
+-(NSString*)Append:(NSString*)string1 secondString:(NSString*)string2
 {
     NSMutableString *appendedString = [[NSMutableString alloc] initWithCapacity:2];
     // if there were more than two values here I suppose a loop would be more prudent.

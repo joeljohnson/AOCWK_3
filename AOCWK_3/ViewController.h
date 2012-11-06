@@ -13,9 +13,12 @@
 
 }
 
--(int)Add:(NSInteger) numberOne :(NSInteger) numberTwo;
--(BOOL)Compare:(NSInteger)number1 :(NSInteger)number2;
--(NSString*)Append:(NSString*)string1 :(NSString*)string2;
+-(int)Add:(NSInteger)numberOne thisNumber:(NSInteger)numberTwo;
+
+-(BOOL)Compare:(NSInteger)number1 numberDeuce:(NSInteger)number2;
+
+-(NSString*)Append:(NSString*)string1 secondString:(NSString*)string2;
+
 -(void)DisplayAlertWithString:(NSString*)theString;
 
 
