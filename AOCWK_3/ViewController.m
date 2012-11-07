@@ -19,7 +19,7 @@
     // 4. Call the Append function with two NSStrings. Capture the result and display a UIAlertView with the appended string using displayAlertWithString.
     NSString *appended = [[NSString alloc]init];
     appended = [self Append:@"This is my first String." secondString:@"This is my second String"];
-    NSLog(@"%@", appended);
+    //NSLog(@"%@", appended);
     [self DisplayAlertWithString:appended];
 
     
@@ -40,25 +40,26 @@
     [self DisplayAlertWithString:theSumMessage];
 
 // 9. Call the Compare function with two integer values. If Compare returns YES, display an UIAlertView both with the input values and the result using the DisplayAlertWithString function
-    
+    //Two integers 
     int compareValue1 = 112;
     int compareValue2 = 112;
+    //convert the ints to Strings to use later.
+    NSString *cv1 = [NSString stringWithFormat:@"%d",compareValue1];
+    NSString *cv2 = [NSString stringWithFormat:@"%d",compareValue2];
 
     BOOL comparedAnswer = [self Compare:compareValue1 numberDeuce:compareValue2];
-    //There has got to be a better way to do this ????
     
-    if (comparedAnswer == YES)
+    if (comparedAnswer)
     {
-        NSNumber *val1 = [[NSNumber alloc]initWithInt:compareValue1];
-        NSNumber *val2 = [[NSNumber alloc]initWithInt:compareValue2];
-        NSString *val1S = [val1 stringValue];
-        NSString *val2S = [val2 stringValue];
-        NSString *returned = @"YES";
+        
+        //setup my message to send to the DisplayUIAlert
+        
+        NSString *returned = @"\n compare function returned YES";
         NSString *comparedfirst = @"The first Number is: ";
-        NSString *comparedsecond = @"The second Number is: ";
-        NSString *compareAddfirst = [comparedfirst stringByAppendingString:val1S];
+        NSString *comparedsecond = @"\n The second Number is: ";
+        NSString *compareAddfirst = [comparedfirst stringByAppendingString:cv1];
         NSString *compareAddsecond = [compareAddfirst stringByAppendingString:comparedsecond];
-        NSString *compareAddSecondVal = [compareAddsecond stringByAppendingString:val2S];
+        NSString *compareAddSecondVal = [compareAddsecond stringByAppendingString:cv2];
         NSString *finalMessage = [compareAddSecondVal stringByAppendingString:returned];
         [self DisplayAlertWithString:finalMessage];
         
@@ -99,13 +100,14 @@
 } 
 
 // 3. Create a function called Append. This function will take two NSStrings and return a new NSString containing the appended strings using an NSMutableString and the Append method.
+
 -(NSString*)Append:(NSString*)string1 secondString:(NSString*)string2
 {
     NSMutableString *appendedString = [[NSMutableString alloc] initWithCapacity:2];
     // if there were more than two values here I suppose a loop would be more prudent.
     [appendedString appendString:string1];
     [appendedString appendString:string2];
-    NSLog(@"(IN THE FUNCTION) %@", appendedString);
+    //NSLog(@"(IN THE FUNCTION) %@", appendedString);
     return appendedString;
 }
 
