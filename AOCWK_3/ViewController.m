@@ -43,9 +43,6 @@
     //Two integers 
     int compareValue1 = 112;
     int compareValue2 = 112;
-    //convert the ints to Strings to use later.
-    NSString *cv1 = [NSString stringWithFormat:@"%d",compareValue1];
-    NSString *cv2 = [NSString stringWithFormat:@"%d",compareValue2];
 
     BOOL comparedAnswer = [self Compare:compareValue1 numberDeuce:compareValue2];
     NSString *answer = comparedAnswer ? @"YES" : @"NO";
@@ -54,15 +51,8 @@
     {
         
         //setup my message to send to the DisplayUIAlert
-        
-        NSString *returned = @"\n compare function returned ";
-        NSString *comparedfirst = @"The first Number is: ";
-        NSString *comparedsecond = @"\n The second Number is: ";
-        NSString *compareAddfirst = [comparedfirst stringByAppendingString:cv1];
-        NSString *compareAddsecond = [compareAddfirst stringByAppendingString:comparedsecond];
-        NSString *compareAddSecondVal = [compareAddsecond stringByAppendingString:cv2];
-        NSString *comparemessage = [compareAddSecondVal stringByAppendingString:returned];
-        NSString *finalMessage = [comparemessage stringByAppendingString:answer];
+        NSString *finalMessage = [NSString stringWithFormat:@"Compare function returned %@. \nThe first number is %i. \n The second number is %i.",answer, compareValue1, compareValue2];
+
         [self DisplayAlertWithString:finalMessage];
         
         
