@@ -48,19 +48,21 @@
     NSString *cv2 = [NSString stringWithFormat:@"%d",compareValue2];
 
     BOOL comparedAnswer = [self Compare:compareValue1 numberDeuce:compareValue2];
+    NSString *answer = comparedAnswer ? @"YES" : @"NO";
     
     if (comparedAnswer)
     {
         
         //setup my message to send to the DisplayUIAlert
         
-        NSString *returned = @"\n compare function returned YES";
+        NSString *returned = @"\n compare function returned ";
         NSString *comparedfirst = @"The first Number is: ";
         NSString *comparedsecond = @"\n The second Number is: ";
         NSString *compareAddfirst = [comparedfirst stringByAppendingString:cv1];
         NSString *compareAddsecond = [compareAddfirst stringByAppendingString:comparedsecond];
         NSString *compareAddSecondVal = [compareAddsecond stringByAppendingString:cv2];
-        NSString *finalMessage = [compareAddSecondVal stringByAppendingString:returned];
+        NSString *comparemessage = [compareAddSecondVal stringByAppendingString:returned];
+        NSString *finalMessage = [comparemessage stringByAppendingString:answer];
         [self DisplayAlertWithString:finalMessage];
         
         
